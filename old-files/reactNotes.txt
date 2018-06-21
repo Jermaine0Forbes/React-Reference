@@ -1,0 +1,14 @@
+- Whenever you are going to create a component, make sure the variable is
+capitalized. There is not many instructors/tutorials makers  that are making
+note of this simple information.
+
+-There can only be parent element in every component. So if you want multiple
+elements to be displayed in the document then you need to put them
+inside a div tag or  other element that will
+encompass it
+
+- In order to get a specific name of an attribute from a xml tag that is being rendered you need to go the createClass.render method and insert this.props."insert attribue name"
+in order for you to see it in the browser
+
+-Whatever attribute name you come up with in the render method, Example: <Component text ="This is text"/> . In order to access it you have you have to put it in curly braces like this
+{this.props.text}

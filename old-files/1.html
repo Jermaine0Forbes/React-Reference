@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>REACT 1</title>
+    <script src="https://fb.me/react-15.2.1.js"></script>
+<script src="https://fb.me/react-dom-15.2.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.js"></script>
+<style type="text/css">
+.board{ background:#ff5050; width:500px; border:4px solid #ff8080;}
+.commentContainer{ background:#bd0f0f; padding:20px; border-radius:7px; min-width:200px; margin:20px auto;}
+.commentText{text-transform:uppercase; font-weight:bold; font-family:arial; color:white; font-size:18px;}
+button.btn-primary{background:#24a866;color:white; }
+button.btn-danger{background:white; color:#bd0f0f; }
+.btn{font-weight:18px; margin:5px; border:none; border-radius:5px; padding:3px; }
+</style>
+  </head>
+  <body>
+    <div id="react-container">
+
+    </div>
+<script type="text/babel" >
+/* var myComponent = React.createClass({
+   render:function(){
+     return (<div>My Component </div>);
+   }
+ });
+ ReactDOM.render(<myComponent/>, document.getElementById('react-container'));
+////////////////////////////////////////////////////////////////////////////////
+ var Movie = React.createClass({
+render:function(){
+return (<div>
+ <h1>{this.props.title}</h1>
+ <h2>{this.props.genre}</h2>
+  </div>);
+
+}
+
+
+ });
+ ReactDOM.render(<div>
+<Movie title="All dogs go to heaven" genre="animation comedy"/>
+<Movie title="Ferngully" genre="animation comedy"/>
+<Movie title="Lion King" genre="animation action"/>
+
+   </div>, document.getElementById('react-container'));
+//////////////////////////////////////////////////////////////////////////////////
+
+
+var Checkbox = React.createClass({
+  render:function(){
+    var msg;
+    if(this.state.checked){
+      msg = "checked";
+    }else{
+      msg = "unchecked";
+    }
+
+    return (<div>
+<input type="checkbox" onChange = {this.handleChecked} defaultChecked ={this.state.checked}/>
+<h3>Checkbox is {msg}</h3>
+      </div>);
+  },
+  getInitialState: function(){
+    return {
+      checked:true
+    };
+  },
+  handleChecked: function(){
+    this.setState({checked: !this.state.checked})
+  }
+})
+ReactDOM.render(<Checkbox/> , document.getElementById('react-container'));*/
+
+var Comment = React.createClass({
+  getInitialState:function(){
+    return {editing:false};
+  },
+  edit : function(){
+    this.setState({editing:true});
+  },
+  save : function(){
+    var val = this.ref.newText.value;
+    
+    this.setState({editing:false});
+  },
+  remove: function(){
+    console.log('removing content');
+  },
+renderNormal:function(){
+return (
+  <div className ="commentContainer">
+<div className ="commentText">{this.props.children}</div>
+<button onClick = {this.edit} className ="btn btn-primary">Edit</button>
+<button onClick = {this.remove} className ="btn btn-danger">Remove</button>
+
+   </div>
+);
+
+},
+renderForm:function(){
+return (
+  <div className ="commentContainer">
+<textarea ref = "nextText" defaultValue={this.props.children}></textarea>
+<button onClick = {this.save} className ="btn btn-success">Save</button>
+
+
+   </div>
+);
+
+},
+render:function(){
+if(this.state.editing){
+
+  return this.renderForm();
+}else{
+
+  return this.renderNormal();
+}
+
+}
+
+
+});
+   ReactDOM.render(<div className="board">
+  <Comment> Scoobydoo </Comment>
+  <Comment> My little Pony </Comment>
+  <Comment> Yugioh </Comment>
+</div>
+   , document.getElementById('react-container'));
+
+</script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>React Lynda</title>
+   <script src="https://fb.me/react-15.2.1.js"></script>
+<script src="https://fb.me/react-dom-15.2.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.24/browser.js"></script>
+  </head>
+  <body>
+    <div id="container">
+
+    </div>
+
+    <script type="text/babel">
+   function _id(id){
+     return document.getElementById(id);
+   }
+
+  var   Component = React.createClass({
+       render:function(){
+         return(<div>
+<h3>{this.props.text}</h3>
+<p>{this.props.children}</p>
+           </div>);
+       }
+     });
+     ReactDOM.render(
+       <div>
+       <Component text="hello world">because I have to say it</Component>
+       <Component text="I'm a loser"> because I live with my mother</Component>
+       <Component text="who is 26 years old"> because that is my age</Component>
+       </div>
+       , _id('container'));
+    </script>
+
+  </body>
+</html>
