@@ -22,9 +22,9 @@ View Content
 **React Definition**: A common pattern in React is for a component to return multiple elements. Fragments let you group a list of children without adding extra nodes to the DOM.
 
 **My Definition:** I think it is used to encase other child components, but I don't know if it is better than enclosing child 
-components with <React.Fragment> or just <div> tags
+components with `<React.Fragment>` or just `<div>` tags
 
-```
+```js
 render() {
   return (
     <React.Fragment>
