@@ -2,10 +2,43 @@
 
 This is a way to keep note on how to do  react
 
-[how to create a fragment][fragments]
+- [how to change the port number][port-number]
+- [how to create a fragment][fragments]
 
+
+[port-number]:#how-to-change-port-number
 [fragments]:#how-to-create-a-fragment
 [home]:#react-reference
+
+
+### how to change the port number
+
+<details>
+<summary>
+View Content
+</summary>
+
+1. Assuming that you already created a react application with the command `create-react-app insertNameOfApp`. 
+If you are  in linux type this in the terminal.
+
+```
+vim .env
+```
+
+2. This should open a new file in the vim editor. Type 'i' in the editor in order to insert text and insert the 
+port number of your choosing
+
+```
+PORT=4000
+```
+
+3. To save and quit the editor hit the "ESC" key and ":wq".
+
+4. Now run react and the port number should be changed to number that is the **.env** file.
+
+</details>
+
+[go back :house:][home]
 
 ### how to create a fragment
 
