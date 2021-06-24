@@ -5,10 +5,36 @@ This is a way to keep note on how to do  react
 - [how to change the port number][port-number]
 - [how to create a fragment][fragments]
 
+### Errors
+- [React Error : __WEBPACK_IMPORTED_MODULE_4_jquery___default(…)(…).modal is not a function][error-1]
 
+[error-1]:#modal-is-not-a-function
 [port-number]:#how-to-change-port-number
 [fragments]:#how-to-create-a-fragment
 [home]:#react-reference
+
+
+### modal is not a function
+
+<details>
+<summary>
+View Content
+</summary>
+
+:link: **Reference**
+
+- [stackoverflow](https://stackoverflow.com/questions/52464915/react-error-webpack-imported-module-4-jquery-default-modal-is-no/52464960)
+---
+
+```js
+// If you ever get this error just import the $ in the top of your component like so
+
+import $ from 'jquery'
+```
+
+</details>
+
+[go back :house:][home]
 
 
 ### how to change the port number
