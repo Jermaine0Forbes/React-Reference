@@ -1,18 +1,101 @@
 # React Reference
 
-This is a way to keep note on how to do  react
+This is a way to keep note on how to do react
 
 - [how to change the port number][port-number]
 - [how to create a fragment][fragments]
+- [how to re-render a component when the window resizes][window-resize]
 
 ### Errors
 - [React Error : __WEBPACK_IMPORTED_MODULE_4_jquery___default(…)(…).modal is not a function][error-1]
 
+[window-resize]:#how-to-rerender-a-component-when-the-window-resizes
 [error-1]:#modal-is-not-a-function
 [port-number]:#how-to-change-port-number
 [fragments]:#how-to-create-a-fragment
 [home]:#react-reference
 
+
+### how to re-render a component when the window resizes
+
+<details>
+<summary>
+View Content
+</summary>
+
+:link: **Reference**
+
+- [Re-render a React Component on Window Resize](https://www.pluralsight.com/guides/re-render-react-component-on-window-resize)
+---
+
+:exclamation: **Note:**
+
+---
+
+#### A way to do it with hooks 
+
+```js
+import React from 'react'
+function MyComponent() {
+  const [dimensions, setDimensions] = React.useState({ 
+    height: window.innerHeight,
+    width: window.innerWidth
+  })
+  React.useEffect(() => {
+    function handleResize() {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth
+      })
+    
+}
+
+    window.addEventListener('resize', handleResize)
+  })
+  return <div>Rendered at {dimensions.width} x {dimensions.height}</div>
+}
+```
+
+#### A way to do it with classes 
+
+```js
+  class MyComponent extends Component{
+
+      constructor(props){
+          super(props)
+          this.state ={
+              setSize: {
+                  height:window.innerHeight,
+                  width:window.innerWidth,
+              },
+          }
+      }
+
+      handleResize = () => {
+
+          // insert other stuff
+          
+          this.setState({
+              setSize:{
+                  height:window.innerHeight,
+                  width:window.innerWidth
+              }
+          })
+      }
+
+      componentDidMount()
+      {
+          const {handleResize} = this;
+
+          window.addEventListener("resize", handleResize);
+      }
+  }
+
+```
+
+</details>
+
+[go back :house:][home]
 
 ### modal is not a function
 
