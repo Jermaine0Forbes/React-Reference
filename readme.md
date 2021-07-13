@@ -45,7 +45,6 @@ When you are rendering a  component you can create a switch statement that looks
  }
 ```
 
-Explanation: 
 
 </details>
 
