@@ -5,15 +5,51 @@ This is a way to keep note on how to do react
 - [how to change the port number][port-number]
 - [how to create a fragment][fragments]
 - [how to re-render a component when the window resizes][window-resize]
+- [how to use switch statement inside react][switch-react]
 
 ### Errors
 - [React Error : __WEBPACK_IMPORTED_MODULE_4_jquery___default(…)(…).modal is not a function][error-1]
 
+[switch-react]:#how-to-use-switch-statement-inside-react
 [window-resize]:#how-to-rerender-a-component-when-the-window-resizes
 [error-1]:#modal-is-not-a-function
 [port-number]:#how-to-change-port-number
 [fragments]:#how-to-create-a-fragment
 [home]:#react-reference
+
+### how to use switch statement inside react
+
+<details>
+<summary>
+View Content
+</summary>
+
+:link: **Reference**
+- [stackoverflow](https://stackoverflow.com/questions/46592833/how-to-use-switch-statement-inside-a-react-component)
+---
+
+When you are rendering a  component you can create a switch statement that looks like below
+
+```js
+ render(){
+     return(
+         <>
+            {
+                {
+                'foo': <Foo />,
+                'bar': <Bar />
+                }[param]
+            }
+         </>
+     )
+ }
+```
+
+Explanation: 
+
+</details>
+
+[go back to table of contents][home]
 
 
 ### how to re-render a component when the window resizes
