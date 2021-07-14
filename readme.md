@@ -6,16 +6,53 @@ This is a way to keep note on how to do react
 - [how to create a fragment][fragments]
 - [how to re-render a component when the window resizes][window-resize]
 - [how to use switch statement inside react][switch-react]
+- [how to update field values in reduxForm][update-reduxform]
 
 ### Errors
 - [React Error : __WEBPACK_IMPORTED_MODULE_4_jquery___default(…)(…).modal is not a function][error-1]
 
+[update-reduxform]:#how-to-update-field-values-in-reduxform
 [switch-react]:#how-to-use-switch-statement-inside-react
 [window-resize]:#how-to-rerender-a-component-when-the-window-resizes
 [error-1]:#modal-is-not-a-function
 [port-number]:#how-to-change-port-number
 [fragments]:#how-to-create-a-fragment
 [home]:#react-reference
+
+
+### how to update field values in reduxForm
+
+<details>
+<summary>
+View Content
+</summary>
+
+:link: **Reference**
+- [stackoverflow](https://stackoverflow.com/questions/45230531/programmatically-change-redux-form-field-value)
+---
+
+This is only important if you're meaning to update any information in the reduxForm library
+
+```js
+import { change } from "redux-form";
+
+handleSelectChange = (value, type) => {
+  if (type === "site") {
+      // The change method will update value based on the name of the field
+      // that is provided in the second parameter
+    this.props.change('nameofForm', "nameOfField", value);
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({change}, dispatch);
+}
+
+```
+
+</details>
+
+[go back to table of contents][home]
 
 ### how to use switch statement inside react
 
