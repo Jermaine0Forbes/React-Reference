@@ -12,8 +12,9 @@ This is a way to keep note on how to do react
 
 ### Errors
 - [React Error : __WEBPACK_IMPORTED_MODULE_4_jquery___default(…)(…).modal is not a function][error-1]
+- [Support for the experimental syntax 'jsx' isn't currently enabled][err-2]
 
-
+[err-2]:#support-for-the-experimental-syntax-jsx-isnt-currently-enabled
 [setup-wp]:#how-to-setup-react-with-webpack[setup-wp]
 [jest-react]:#how-to-setup-jest-with-react
 [update-reduxform]:#how-to-update-field-values-in-reduxform
@@ -24,6 +25,45 @@ This is a way to keep note on how to do react
 [fragments]:#how-to-create-a-fragment
 [home]:#react-reference
 
+
+### Support for the experimental syntax 'jsx' isn't currently enabled
+
+<details>
+<summary>
+View Content
+</summary>
+
+:link: **Reference**
+
+- [Unexpected token “<”](https://stackoverflow.com/questions/56952728/jest-tests-on-react-components-unexpected-token)
+- [“Cannot use import statement outside a module”](https://stackoverflow.com/questions/58613492/how-to-resolve-cannot-use-import-statement-outside-a-module-in-jest)
+---
+
+This is an error that you will see if you're jest to test react applications. This solution can also fix several other errors like 
+-  Unexpected token “<”
+-  “Cannot use import statement outside a module” 
+
+Basically the way to resolve this issue is to add react presets within a `babel.config.js`. If you have set up jest yet, then go [here][jest-react]
+
+
+1. If you have not installed these babel packages then you should right now.
+
+```
+ npm i -D @babel/preset-env @babel/preset-react
+```
+
+2. Next, create a `babel.config.js` file and insert this code
+
+```js
+module.exports = {presets: ['@babel/preset-env','@babel/preset-react']}
+
+```
+3. What I found out is that when you added these presets you don't receive this error message, when you run jest that might a jsx component
+within the file.
+
+</details>
+
+[go back :house:][home]
 
 ### how to setup react with webpack
 
