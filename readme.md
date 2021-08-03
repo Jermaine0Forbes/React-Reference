@@ -7,10 +7,15 @@ This is a way to keep note on how to do react
 - [how to re-render a component when the window resizes][window-resize]
 - [how to use switch statement inside react][switch-react]
 - [how to update field values in reduxForm][update-reduxform]
+- [how to setup jest with react][jest-react]
+- [how to setup react with webpack ][setup-wp]
 
 ### Errors
 - [React Error : __WEBPACK_IMPORTED_MODULE_4_jquery___default(…)(…).modal is not a function][error-1]
 
+
+[setup-wp]:#how-to-setup-react-with-webpack[setup-wp]
+[jest-react]:#how-to-setup-jest-with-react
 [update-reduxform]:#how-to-update-field-values-in-reduxform
 [switch-react]:#how-to-use-switch-statement-inside-react
 [window-resize]:#how-to-rerender-a-component-when-the-window-resizes
@@ -18,6 +23,179 @@ This is a way to keep note on how to do react
 [port-number]:#how-to-change-port-number
 [fragments]:#how-to-create-a-fragment
 [home]:#react-reference
+
+
+### how to setup react with webpack
+
+<details>
+<summary>
+View Content
+</summary>
+
+:link: **Reference**
+
+- [How to setup React with Webpack](https://levelup.gitconnected.com/how-to-setup-a-react-application-with-webpack-f781b5c4a4ab)
+---
+
+1. First install react & webpack libraries
+
+```
+npm i react react-dom ; npm i -D webpack webpack-cli
+```
+
+2. Next create a directory that will hold the react files. So in the terminal type `mkdir src` or whatever you want your folder to be named.
+Then create the  **App.js** file, and add the basic code like so.
+
+```js
+
+import React from "react";
+
+export default function App() {
+  return <h1>Hello World</h1>;
+}
+```
+
+3. Now, create the **index.js** file that will render the react file like so.
+
+```js
+
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+
+ReactDOM.render(<App />, document.getElementById("app"));
+```
+
+4. Next install the babel loaders that will compile your react code so that can be used in the browser
+
+```
+npm i -D @babel/core @babel/preset-env @babel/preset-react babel-loader
+```
+
+5. Now it's time to create the webpack file. So you can  `vim webpack.config.js`, and add this code like so to your config file
+
+```js
+
+const path = require("path");
+module.exports = {
+  entry: "/src/index.js",
+  output: { path: path.resolve(__dirname, "public/js/") },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"],
+          },
+        },
+      },
+    ],
+  },
+  mode: "development",
+  watch:true,
+};
+
+```
+
+6. Now in your package.json, add a webpack script that you can call when you do `npm run ...` like so
+
+```
+  "scripts": {
+    "build": "webpack" // in the scripts property add this code
+  },
+
+```
+
+7. So now you if put in the the terminal `npm run build`, webpack would be in watch mode and will compile your code
+to the designated **output** property. So in this example it would be `public/js/main.js`. If you want to change the 
+name of the output file you have to add the  **filename** property inside the **output** object of the webpack object..
+
+
+</details>
+
+[go back :house:][home]
+
+
+### how to setup jest with react
+
+<details>
+<summary>
+View Content
+</summary>
+
+:link: **Reference**
+
+- [How to test React with Jest](https://www.robinwieruch.de/react-testing-jest)
+---
+
+I'm going to assume that you already installed react and got a react app up and running
+
+1. So first install jest
+
+```
+npm i -D jest
+```
+2. Now in the package.json, add this in the *scripts* section. This will allow you to run jest with any
+cofigurations that you are going to put in the `jest.config.js`
+
+```json
+{
+  ...
+  "scripts": {
+    "start": "webpack serve --config ./webpack.config.js --mode development",
+    "test": "jest --config jest.config.js",
+    "test:watch": "npm run test -- --watch",
+  },
+  ...
+}
+```
+
+3. Now let's `vim jest.config.js` and add this necessary code to look for any js files that might have the *spec* extension
+
+```js
+module.exports = {
+  "testRegex": "((\\.|/*.)(spec))\\.js?$"
+}
+```
+
+4. If you have not installed babel libraries that are needed for jest, here is the time to do so
+
+```
+ npm i -D @babel/preset-env @babel/preset-react
+```
+
+5. Next, let's create a `babel.config.js` file in order to make sure jest does not throw any errors when you add JSX in
+your testing files. Add code like so 
+
+```js
+module.exports = {presets: ['@babel/preset-env','@babel/preset-react']}
+
+```
+
+6. Now if you already have an App.js file, create a *App.spec.js* file and add code like so. This will be a general
+ assertion to just to see if jest is running.
+
+```js
+import React from "react";
+
+
+describe('My Test Suite', () => {
+  it('should show my first test', () => {
+    expect(true).toEqual(true);
+  });
+});
+
+```
+
+7. Now run `npm run test`, jest should start running and the result should pass.
+
+</details>
+
+[go back :house:][home]
+
 
 
 ### how to update field values in reduxForm
