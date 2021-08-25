@@ -179,7 +179,7 @@ I'm going to assume that you already installed react and got a react app up and 
 npm i -D jest
 ```
 2. Now in the package.json, add this in the *scripts* section. This will allow you to run jest with any
-cofigurations that you are going to put in the `jest.config.js`
+cofigurations that you are going to put in the `package.json`
 
 ```json
 {
